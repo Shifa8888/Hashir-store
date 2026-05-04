@@ -215,7 +215,7 @@ const products: Product[] = [
     description:
       "Apple's ultra-portable MacBook Air M3 delivers all-day battery life, a brilliant Liquid Retina display, and flagship performance for creators, founders, and remote teams.",
     features: ["M3 chip with 8-core GPU", "Up to 18 hours battery life", "MagSafe charging + two Thunderbolt ports"],
-    image: "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "sony-wh1000xm5",
@@ -327,7 +327,7 @@ const products: Product[] = [
     description:
       "Hands-free floor care with intelligent mapping, powerful pickup, and wet-mop compatibility designed for busy homes and hybrid work routines.",
     features: ["Learns your floor plan", "Vacuums and mops", "App scheduling + voice assistants"],
-    image: "https://images.unsplash.com/photo-1581579188871-45ea61f2a6c8?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "dyson-purifier-cool",
