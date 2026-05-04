@@ -2812,28 +2812,30 @@ export default function App() {
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Search products, brands, or categories"
-                  className="w-full rounded-full border px-5 py-3 text-sm outline-none transition duration-300"
+                  className="w-full min-w-0 rounded-full border px-5 py-3 text-sm outline-none transition duration-300"
                   style={{ backgroundColor: theme.surfaceAlt, borderColor: theme.border, color: theme.text }}
                 />
                 <ThemeSwitcher activeTheme={themeName} onChange={setThemeName} theme={theme} compact className="xl:hidden" />
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setActiveView("wishlist")}
-                  className="rounded-full border px-4 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5"
+                  className="rounded-full border px-3 py-2 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 sm:px-4 sm:py-3"
                   style={{ backgroundColor: theme.surfaceAlt, color: theme.text, borderColor: theme.border }}
                 >
-                  Wishlist ({wishlist.length})
+                  <span className="sm:hidden">♡ {wishlist.length}</span>
+                  <span className="hidden sm:inline">Wishlist ({wishlist.length})</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveView("cart")}
-                  className="rounded-full border px-4 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5"
+                  className="rounded-full border px-3 py-2 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 sm:px-4 sm:py-3"
                   style={{ backgroundColor: theme.accent, color: theme.accentText, borderColor: theme.accent }}
                 >
-                  Cart ({cartCount})
+                  <span className="sm:hidden">⊡ {cartCount}</span>
+                  <span className="hidden sm:inline">Cart ({cartCount})</span>
                 </button>
                 <button
                   type="button"
@@ -2897,23 +2899,32 @@ export default function App() {
       </main>
 
       <div
-        className="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-xl -translate-x-1/2 items-center justify-between gap-2 rounded-full border px-2 py-2 backdrop-blur-2xl lg:hidden"
+        className="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-sm -translate-x-1/2 items-center justify-between gap-1 rounded-full border px-2 py-2 backdrop-blur-2xl sm:max-w-xl sm:gap-2 lg:hidden"
         style={{ backgroundColor: theme.card, borderColor: theme.border, boxShadow: theme.shadow }}
       >
         {navItems.map((item) => {
           const active = activeView === item.view;
+          const icons: Record<string, string> = {
+            home: "⌂",
+            catalog: "◫",
+            wishlist: "♡",
+            cart: "⊡",
+            dashboard: "◉",
+          };
           return (
             <button
               key={item.view}
               type="button"
               onClick={() => setActiveView(item.view)}
-              className="flex-1 rounded-full px-3 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition duration-300"
+              className="flex flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-1 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] transition duration-300 sm:flex-row sm:gap-1 sm:px-3 sm:py-3 sm:text-xs sm:tracking-[0.18em]"
               style={{
                 backgroundColor: active ? theme.accent : "transparent",
                 color: active ? theme.accentText : theme.text,
               }}
             >
-              {item.label}
+              <span className="text-base leading-none sm:hidden">{icons[item.view]}</span>
+              <span className="hidden sm:inline">{item.label}</span>
+              <span className="sm:hidden">{item.label.slice(0, 4)}</span>
             </button>
           );
         })}
