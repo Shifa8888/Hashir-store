@@ -2899,7 +2899,7 @@ export default function App() {
       </main>
 
       <div
-        className="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-sm -translate-x-1/2 items-center justify-between gap-1 rounded-full border px-2 py-2 backdrop-blur-2xl sm:max-w-xl sm:gap-2 lg:hidden"
+        className="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-[22rem] -translate-x-1/2 items-center justify-between gap-0.5 rounded-full border px-1.5 py-1.5 backdrop-blur-2xl sm:max-w-xl sm:gap-2 sm:px-2 sm:py-2 lg:hidden"
         style={{ backgroundColor: theme.card, borderColor: theme.border, boxShadow: theme.shadow }}
       >
         {navItems.map((item) => {
@@ -2911,20 +2911,27 @@ export default function App() {
             cart: "⊡",
             dashboard: "◉",
           };
+          const shortLabels: Record<string, string> = {
+            home: "Home",
+            catalog: "Shop",
+            wishlist: "Saved",
+            cart: "Cart",
+            dashboard: "Me",
+          };
           return (
             <button
               key={item.view}
               type="button"
               onClick={() => setActiveView(item.view)}
-              className="flex flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-1 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] transition duration-300 sm:flex-row sm:gap-1 sm:px-3 sm:py-3 sm:text-xs sm:tracking-[0.18em]"
+              className="flex flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-0.5 py-2 text-[9px] font-semibold uppercase tracking-tight transition duration-300 sm:flex-row sm:gap-1 sm:px-3 sm:py-3 sm:text-xs sm:tracking-[0.18em]"
               style={{
                 backgroundColor: active ? theme.accent : "transparent",
                 color: active ? theme.accentText : theme.text,
               }}
             >
-              <span className="text-base leading-none sm:hidden">{icons[item.view]}</span>
+              <span className="text-sm leading-none">{icons[item.view]}</span>
               <span className="hidden sm:inline">{item.label}</span>
-              <span className="sm:hidden">{item.label.slice(0, 4)}</span>
+              <span className="sm:hidden">{shortLabels[item.view]}</span>
             </button>
           );
         })}
