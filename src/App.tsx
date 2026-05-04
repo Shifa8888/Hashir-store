@@ -491,7 +491,7 @@ const categorySummaries: Record<ProductCategory, { blurb: string; metric: string
 
 const defaultProfile: Profile = {
   name: "Avery Stone",
-  email: "avery@novacart.com",
+  email: "avery@hashirinnovation.com",
 };
 
 const starterOrders: Order[] = [
@@ -868,7 +868,7 @@ function EmptyState({
           className="inline-flex rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
           style={{ backgroundColor: theme.surfaceAlt, color: theme.accentStrong, borderColor: theme.border }}
         >
-          NovaCart
+          Hashir Innovation
         </span>
         <h3 className="text-2xl font-semibold" style={{ color: theme.text }}>
           {title}
@@ -887,22 +887,22 @@ function EmptyState({
 }
 
 export default function App() {
-  const [themeName, setThemeName] = useState<ThemeName>(() => readStoredValue<ThemeName>("novacart-theme", "light"));
-  const [profile, setProfile] = useState<Profile>(() => readStoredValue<Profile>("novacart-profile", defaultProfile));
-  const [authenticated, setAuthenticated] = useState<boolean>(() => readStoredValue<boolean>("novacart-auth", false));
-  const [activeView, setActiveView] = useState<View>(() => (readStoredValue<boolean>("novacart-auth", false) ? "home" : "auth"));
+  const [themeName, setThemeName] = useState<ThemeName>(() => readStoredValue<ThemeName>("hashir-theme", "light"));
+  const [profile, setProfile] = useState<Profile>(() => readStoredValue<Profile>("hashir-profile", defaultProfile));
+  const [authenticated, setAuthenticated] = useState<boolean>(() => readStoredValue<boolean>("hashir-auth", false));
+  const [activeView, setActiveView] = useState<View>(() => (readStoredValue<boolean>("hashir-auth", false) ? "home" : "auth"));
   const [authMode, setAuthMode] = useState<AuthMode>("login");
   const [authForm, setAuthForm] = useState({ name: "", email: defaultProfile.email, password: "" });
   const [selectedProductId, setSelectedProductId] = useState<string>(products[0].id);
   const [selectedCategory, setSelectedCategory] = useState<"All" | ProductCategory>("All");
   const [search, setSearch] = useState("");
   const [bannerIndex, setBannerIndex] = useState(0);
-  const [wishlist, setWishlist] = useState<string[]>(() => readStoredValue<string[]>("novacart-wishlist", []));
-  const [cart, setCart] = useState<CartItem[]>(() => readStoredValue<CartItem[]>("novacart-cart", []));
+  const [wishlist, setWishlist] = useState<string[]>(() => readStoredValue<string[]>("hashir-wishlist", []));
+  const [cart, setCart] = useState<CartItem[]>(() => readStoredValue<CartItem[]>("hashir-cart", []));
   const [notification, setNotification] = useState<string | null>(null);
   const [checkoutStep, setCheckoutStep] = useState(1);
-  const [checkoutForm, setCheckoutForm] = useState<CheckoutForm>(() => readStoredValue<CheckoutForm>("novacart-checkout", defaultCheckoutForm));
-  const [orders, setOrders] = useState<Order[]>(() => readStoredValue<Order[]>("novacart-orders", starterOrders));
+  const [checkoutForm, setCheckoutForm] = useState<CheckoutForm>(() => readStoredValue<CheckoutForm>("hashir-checkout", defaultCheckoutForm));
+  const [orders, setOrders] = useState<Order[]>(() => readStoredValue<Order[]>("hashir-orders", starterOrders));
 
   const theme = themes[themeName];
 
@@ -980,13 +980,13 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("novacart-theme", JSON.stringify(themeName));
-    window.localStorage.setItem("novacart-profile", JSON.stringify(profile));
-    window.localStorage.setItem("novacart-auth", JSON.stringify(authenticated));
-    window.localStorage.setItem("novacart-wishlist", JSON.stringify(wishlist));
-    window.localStorage.setItem("novacart-cart", JSON.stringify(cart));
-    window.localStorage.setItem("novacart-checkout", JSON.stringify(checkoutForm));
-    window.localStorage.setItem("novacart-orders", JSON.stringify(orders));
+    window.localStorage.setItem("hashir-theme", JSON.stringify(themeName));
+    window.localStorage.setItem("hashir-profile", JSON.stringify(profile));
+    window.localStorage.setItem("hashir-auth", JSON.stringify(authenticated));
+    window.localStorage.setItem("hashir-wishlist", JSON.stringify(wishlist));
+    window.localStorage.setItem("hashir-cart", JSON.stringify(cart));
+    window.localStorage.setItem("hashir-checkout", JSON.stringify(checkoutForm));
+    window.localStorage.setItem("hashir-orders", JSON.stringify(orders));
   }, [authenticated, cart, checkoutForm, orders, profile, themeName, wishlist]);
 
   useEffect(() => {
@@ -995,7 +995,7 @@ export default function App() {
 
   useEffect(() => {
     const title = authenticated
-      ? `NovaCart • ${
+      ? `Hashir Innovation • ${
           activeView === "home"
             ? "Home"
             : activeView === "catalog"
@@ -1010,7 +1010,7 @@ export default function App() {
                       ? "Checkout"
                       : "Dashboard"
         }`
-      : "NovaCart • Welcome";
+      : "Hashir Innovation • Welcome";
 
     document.title = title;
   }, [activeView, authenticated, selectedProduct.name]);
@@ -1107,7 +1107,7 @@ export default function App() {
     }));
     setAuthenticated(true);
     setActiveView("home");
-    showToast(authMode === "signup" ? "Account created successfully" : "Welcome back to NovaCart");
+    showToast(authMode === "signup" ? "Account created successfully" : "Welcome back to Hashir Innovation");
     setAuthForm((current) => ({ ...current, password: "" }));
   };
 
@@ -1470,7 +1470,7 @@ export default function App() {
                 Build a personalized shopping rhythm with saved themes, wishlists, and seamless checkout.
               </h2>
               <p className="text-sm leading-7 sm:text-base" style={{ color: theme.muted }}>
-                NovaCart is designed like a premium digital storefront: visual merchandising up front, frictionless purchase flow in the middle, and smart account management at the end.
+                Hashir Innovation is designed like a premium digital storefront: visual merchandising up front, frictionless purchase flow in the middle, and smart account management at the end.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <ActionButton theme={theme} onClick={() => setActiveView("dashboard")}>
@@ -2610,7 +2610,7 @@ export default function App() {
                       N
                     </div>
                     <p className="mt-5 text-sm font-semibold uppercase tracking-[0.35em]" style={{ color: theme.accentStrong }}>
-                      NovaCart Storefront
+                      Hashir Innovation Storefront
                     </p>
                   </div>
                   <ThemeSwitcher activeTheme={themeName} onChange={setThemeName} theme={theme} compact />
@@ -2746,7 +2746,7 @@ export default function App() {
                   </div>
 
                   <ActionButton theme={theme} type="submit" className="mt-2 w-full">
-                    {authMode === "login" ? "Enter NovaCart" : "Create account and continue"}
+                    {authMode === "login" ? "Enter Hashir Innovation" : "Create account and continue"}
                   </ActionButton>
                 </form>
 
@@ -2799,10 +2799,10 @@ export default function App() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: theme.muted }}>
-                    NovaCart
+                    Hashir Innovation
                   </p>
                   <p className="mt-1 text-lg font-semibold" style={{ color: theme.text }}>
-                    Modern commerce for curated living
+                    Hashir Innovation
                   </p>
                 </div>
               </button>
